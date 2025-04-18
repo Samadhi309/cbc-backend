@@ -61,5 +61,12 @@ export function loginUser(req,res){
         console.error("Database Error:", err);
         res.status(500).json({ message: "Internal Server Error" }); // ✅ Handle errors properly
     });
+}
 
+    export function deleteUser(req,res){
+        user.deleteOne({email: req.body.email}).then(()=>[
+        res.json({
+            message : "student deleted"
+        })
+    ])
 }
