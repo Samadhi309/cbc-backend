@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import productRouter from "./Routes/product-route.js";
 import userRouter from "./Routes/user-route.js";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config()
 
 const app = express();
 
