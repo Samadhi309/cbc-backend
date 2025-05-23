@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./Routes/user-route.js";
 import jwt from "jsonwebtoken";
-
+import dotenv from "dotenv";
+dotenv.config()
 
 const app = express();
 
@@ -21,7 +22,8 @@ app.use(bodyParser.json())
 
 app.use(
     (req,res,next)=>{
-        const token = req.headers["authorization"]?.replace("Bearer ", " ");
+        const token = req.headers["authorization"]?.replace("Bearer ", "").trim();
+
 
         if(token != null){
             jwt.verify(token, process.env.SECRET, (error,decoded)=>{

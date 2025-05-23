@@ -7,20 +7,23 @@ import jwt from "jsonwebtoken";
 export function createUser (req,res){
 
     const newUserData =req.body;
-    if (req.user==null){
-        res.json({
-            message:"Please log in as a administrator to create admin account"
-        })
-        return 
-    }
+
+    if(newUserData.type == "admin"){
+
+        if (req.user==null){
+            res.json({
+                message:"Please log in as a administrator to create admin account"
+            })
+            return 
+        }
     
-    if(req.user.type != "admin"){
-        res.json({
-            message:"Please log in as a administrator to create admin account"
-        })
-        return
+        if(req.user.type != "admin"){
+            res.json({
+                message:"Please log in as a administrator to create admin account"
+            })
+            return
+        }
     }
-}
 
     newUserData.password = bcrypt.hashSync(newUserData.password,10);
 
@@ -79,4 +82,5 @@ export function loginUser(req,res){
     });
 }
 
+   // "samadhi@example.com","Gradgirl123#"<---admin
    
