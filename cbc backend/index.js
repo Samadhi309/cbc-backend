@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import userRouter from "./Routes/user-route.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import productRouter from "./Routes/productRouter.js";
 dotenv.config()
 
 const app = express();
@@ -45,6 +46,7 @@ app.use(
 
 
 app.use("/api/users",userRouter)
+app.use("/api/products",productRouter)
 
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");
