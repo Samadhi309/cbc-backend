@@ -1,4 +1,4 @@
-import product from "../models/ products.js";
+import product from "../models/products.js";
 
 
 export function createProduct(req,res){
@@ -29,3 +29,4 @@ export function getProduct(req,res){
         res.json(products)
     })
 }
+
